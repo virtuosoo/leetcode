@@ -1,0 +1,19 @@
+{
+    "tasks": [
+        {
+            "label": "安全扫描",
+            "taskCategory": "codemars",
+            "extraProps": {}
+        },
+        {
+            "label": "代码度量",
+            "taskCategory": "cmetric",
+            "extraProps": {}
+        },
+        {
+            "label": "编程规范",
+            "taskCategory": "codingstyle",
+            "extraProps": {}
+        }
+    ]
+}
