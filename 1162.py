@@ -24,7 +24,7 @@ class Solution:
                     q.append((i, j))
 
         ans = 0
-        while len(q) != 0:
+        while q:
             x, y = q[0]
             q.popleft()
             for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
