@@ -13,7 +13,7 @@ int main()
             if (i == 3) {
                 c = (k - 2) * b % MOD;
             } else {
-                c = ((k - 1) * a + (k - 2) * b) % MOD;
+                c = ((k - 1) * a + (k - 2) * b) % MOD;  //递推 a_n = (k - 1) * a_(n - 2) + (k - 2) * a_(n - 1)
             }
             a = b;
             b = c;
