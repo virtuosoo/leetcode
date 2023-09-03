@@ -28,11 +28,19 @@ public:
         long long res = 0;
         for (int i = 0; i < n; ++i) {
             long long tmp = 0;
+            int end = i;
             for (int j = LOGN - 1; j >= 0; --j) {
                 if ((k >> j) & 1) {
-                    if (cyc[i])
+                    if (cyc[i][j] == -1) {
+                        break;
+                    }
+                    tmp += w[end][j];
+                    end = cyc[end][j];
                 } 
             }
+            tmp += end;
+            res = max(res, tmp);
         }
+        return res;
     }
 };
