@@ -6,8 +6,8 @@ class Solution {
 public:
     bool canPartition(vector<int>& nums) {
         int n = nums.size();
-        vector<int> dp(20005, INT_MIN);
-        dp[0] = 0;
+        vector<bool> dp(20005, false);
+        dp[0] = true;
         int sum = 0;
         for (int &a : nums) {
             sum += a;
@@ -18,9 +18,9 @@ public:
 
         for (int i = 0; i < n; ++i) {
             for (int j = sum; j >= nums[i]; --j) {
-                dp[j] = max(dp[j], dp[j - nums[i]] + 1);
+                dp[j] = dp[j] | dp[j - nums[i]];
             }
         }
-        return dp[sum / 2] > 0;
+        return dp[sum / 2];
     }
 };
