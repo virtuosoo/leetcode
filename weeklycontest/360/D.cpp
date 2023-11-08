@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+//倍增
 class Solution {
 public:
     constexpr static int LOGN = 36;
