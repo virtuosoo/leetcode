@@ -8,18 +8,17 @@ public:
         k = getK(k * 4);
         set<char> vowels = {'a', 'e', 'i', 'o', 'u'};
 
-        vector<int> pre(n + 1);
         map<pair<int, int>, int> mp;
-        mp[make_pair(k - 1, 0)] = 1;
+        mp[{0, 0}] = 1;
 
-        int res = 0;
+        int res = 0, sum = 0;
         for (int i = 1; i <= n; ++i) {
             int c = vowels.count(s[i - 1]) == 1 ? 1 : -1;
-            pre[i] = pre[i - 1] + c;
-            if (mp.find(make_pair(i % k, pre[i])) != mp.end()) {
-                res += mp[make_pair(i % k, pre[i])];
+            sum += c;
+            if (mp.find({i % k, sum}) != mp.end()) {
+                res += mp[{i % k, sum}];
             }
-            mp[make_pair(i % k, pre[i])]++;
+            mp[{i % k, sum}]++;
         }
         return res;
     }
