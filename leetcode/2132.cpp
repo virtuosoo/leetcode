@@ -17,7 +17,7 @@ public:
 
         for (int i = 1; i <= n; ++i) {
             for (int j = 1; j <= m; ++j) {
-                if (grid[i][j] == 0) {
+                if (grid[i - 1][j - 1] == 0) {
                     int x = i + stampHeight - 1, y = j + stampWidth - 1;
                     if (x <= n && y <= m &&
                         sum[x][y] - sum[i - 1][y] - sum[x][j - 1] + sum[i - 1][j - 1] == 0) { //可以放
