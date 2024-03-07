@@ -11,8 +11,7 @@ public:
             q.push({-nums1[0] - nums2[i], 0, i});
         }
 
-        int t = min(n * m, k);
-        while (t--) {
+        while (!q.empty() && ans.size() < k) {
             auto t = q.top();
             int sum = get<0>(t), i = get<1>(t), j = get<2>(t);
             q.pop();
