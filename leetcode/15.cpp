@@ -15,10 +15,12 @@ public:
                 if (nums[j] + nums[k] == -nums[i]) {
                     vector<int> t{nums[i], nums[j], nums[k]};
                     res.push_back(t);
+                    for (++j; j < k && nums[j] == nums[j - 1]; ++j);
+                    for (--k; j < k && nums[k] == nums[k + 1]; --k);
                 } else if (nums[j] + nums[k] < -nums[i]) {
-                    for (++j; nums[j] == nums[j - 1]; ++j);
+                    ++j;
                 } else {
-                    for (--k; nums[k] == nums[k + 1]; --k);
+                    --k;
                 }
             }  
         }
