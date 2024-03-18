@@ -5,7 +5,7 @@ vector<int> mul(vector<int> &a, vector<int> &b)
 {
     int n = a.size(), m = b.size();
     vector<int> c(n + m, 0);
-    for (int i = 0; i < n + m; ++i) {
+    for (int i = 0; i <= n + m - 2; ++i) {
         for (int j = 0; j <= i; ++j) {
             if (j < n && i - j < m) {
                 c[i] += a[j] * b[i - j];
