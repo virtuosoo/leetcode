@@ -14,12 +14,22 @@ public:
             return a[0] < b[0];
         });
 
+        // dp[i]表示只选[1, i]中的工作，可能获得的最大profit
+        // 不一定要选第i个工作。
         int dp[n + 1];
         dp[0] = 0;
         for (int i = 1; i <= n; ++i) {
-            // 注意细节，要找的j是 end[j] <= start[i]
-            // 所以这里设置成INT_MAX， 如果设置成0，那么找的是严格小于的。
-            int j = upper_bound(jobs + 1, jobs + i + 1, array<int, 3>{jobs[i][1], INT_MAX, 0}) - jobs - 1;
+            // 找到最大的j, 满足end[j] <= start[i]
+            int l = 0, r = i;
+            while (l < r) {
+                int mid = (l + r + 1) / 2;
+                if (jobs[mid][0] <= jobs[i][1]) {
+                    l = mid;
+                } else {
+                    r = mid - 1;
+                }
+            }
+            int j = l;
             dp[i] = max(dp[i - 1], dp[j] + jobs[i][2]);
         }
         return dp[n];
